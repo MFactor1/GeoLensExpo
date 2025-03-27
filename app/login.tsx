@@ -1,19 +1,26 @@
 import { useRouter } from 'expo-router';
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { Text, TextInput, TouchableOpacity } from "react-native";
 import { useState } from 'react';
+import styles from './stylesheets'
 
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState<string | null>(null);
 
   const handleLogin = () => {
-    router.push("./home");
+    setErrMsg(null);
+    if (email != "" && password != "") {
+      router.push("./home");
+    } else {
+      setErrMsg('Please input email and password');
+    }
   }
 
   return (
     <>
-      <text>Welcome to the Login Page!</text>
+      <Text style={styles.title} >Login to your GeoLens Account</Text>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -28,11 +35,10 @@ export default function Login() {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title="Login" onPress={handleLogin} />
+      <TouchableOpacity style={styles.primaryButton} onPress={handleLogin}>
+        <Text style={styles.primaryButtonText}>Login</Text>
+      </TouchableOpacity>
+      {errMsg ? <Text style={styles.errorBox}>{errMsg}</Text> : null}
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  input: { borderWidth: 1, padding: 10, marginBottom: 10, borderRadius: 5 },
-});
