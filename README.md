@@ -1,7 +1,7 @@
 # GeoLens
 To first set up:
 ```
-git@github.com:MFactor1/GeoLensExpo.git
+git clone git@github.com:MFactor1/GeoLensExpo.git
 cd GeoLensExpo
 npm install
 ```
