@@ -34,7 +34,7 @@ export default function Login() {
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        keyboardType="email-address"
+        secureTextEntry
       />
       <TextInput
         style={styles.input}
@@ -46,7 +46,7 @@ export default function Login() {
       <TouchableOpacity style={styles.primaryButton} onPress={handleLogin}> {/* Login Button */}
         <Text style={styles.primaryButtonText}>Login</Text>
       </TouchableOpacity>
-      {errMsg && <Text style={styles.errorBox}>{errMsg}</Text>} {/* Display error message if one exists*/}
+      {errMsg ? <Text style={styles.errorBox}>{errMsg}</Text> : null} {/* Display error message if one exists*/}
     </>
   );
 }

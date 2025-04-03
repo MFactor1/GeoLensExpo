@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     padding: 10,
     marginBottom: 10,
-    borderRadius: 7
+    borderRadius: 7,
+    width: 200
   },
   primaryButton: {
     backgroundColor: "#171717",
