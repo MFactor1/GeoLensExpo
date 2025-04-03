@@ -14,8 +14,8 @@ export default function App() {
         alignItems: "center",
       }}
     >
-      <ImageUploader />
-      <TouchableOpacity onPress={() => router.push("/")} style={styles.secondayButton}>
+      <ImageUploader /> {/* Show image uploader component */}
+        <TouchableOpacity onPress={() => router.push("/")} style={styles.secondayButton}> {/* Back to login button */}
         <Text style={styles.secondayButtonText}>Back to Login</Text>
       </TouchableOpacity>
     </View>

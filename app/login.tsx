@@ -5,12 +5,20 @@ import styles from './stylesheets'
 
 export default function Login() {
   const router = useRouter();
+
+  // Track email and password state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // Stores error message
   const [errMsg, setErrMsg] = useState<string | null>(null);
 
+  // Function triggered when login button pushed
   const handleLogin = () => {
+    // Reset any existing error message
     setErrMsg(null);
+
+    // If there is an email and password input, change to the "home" page /*}
     if (email != "" && password != "") {
       router.push("./home");
     } else {
@@ -35,10 +43,10 @@ export default function Login() {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <TouchableOpacity style={styles.primaryButton} onPress={handleLogin}>
+      <TouchableOpacity style={styles.primaryButton} onPress={handleLogin}> {/* Login Button */}
         <Text style={styles.primaryButtonText}>Login</Text>
       </TouchableOpacity>
-      {errMsg ? <Text style={styles.errorBox}>{errMsg}</Text> : null}
+      {errMsg && <Text style={styles.errorBox}>{errMsg}</Text>} {/* Display error message if one exists*/}
     </>
   );
 }

@@ -10,7 +10,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Login />
+      <Login /> {/* defaults to login page on start */}
     </View>
   );
 }
