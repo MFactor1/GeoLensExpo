@@ -1,4 +1,7 @@
 import { db } from '../firebase/firebaseConfig';
+import GeoKnowAI from '../experts/GeoKnowAI';
+import RegionalAI from '../experts/RegionalAI';
+import LandmarkAI from '../experts/LandmarkAI';
 
 class Blackboard {
   async storeData(key: string, value: object): Promise<void> {
@@ -15,14 +18,11 @@ class Blackboard {
   }
 
   async notifyExperts(pictureData: any): Promise<any[]> {
-    const geo = await import('../experts/GeoKnowAI');
-    const regional = await import('../experts/RegionalAI');
-    const landmark = await import('../experts/LandmarkAI');
 
     const results = await Promise.all([
-      geo.default.analyzeLocation(pictureData),
-      regional.default.analyzeRegion(pictureData),
-      landmark.default.analyzeLandmarks(pictureData),
+      GeoKnowAI.analyzeLocation(pictureData),
+      RegionalAI.analyzeRegion(pictureData),
+      LandmarkAI.analyzeLandmarks(pictureData),
     ]);
 
     await this.storeData('expertResults', { results });
