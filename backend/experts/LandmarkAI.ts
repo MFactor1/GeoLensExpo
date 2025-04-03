@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const APYHUB_API_KEY = process.env.APYHUB_API_KEY || 'YOUR_APYHUB_API_KEY';
+const APYHUB_API_KEY = process.env.APYHUB_API_KEY || 'YOUR_APYHUB_API_KEY'; // Pls do not put API key in codebase!!
 
 class LandmarkAI {
   async analyzeLandmarks(pictureData: any): Promise<any> {
